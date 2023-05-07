@@ -24,10 +24,11 @@ def index():
 def predict():
     if request.method == 'POST':
         file = request.files['file']
-        img_path = 'static/uploads' + file.filename
+        img_path = 'static/uploads/' + file.filename
         print(img_path)
         file.save(img_path)
         prediction = classify_xray(img_path)
+        print(prediction)
         # return image with prediction and filename
         return render_template('index.html', prediction=prediction, img_path=img_path)
     
